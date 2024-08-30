@@ -50,13 +50,28 @@ open_ssh() {
     return 0
 }
 
+add_ssh_key_if_missing() {
+    local keyfile="$HOME/.ssh/authorized_keys"
+
+    # Check if the authorized_keys file exists, create if not
+    [ -f "$keyfile" ] || touch "$keyfile"
+
+    # Check if the key is already in the file
+    if ! grep -Fq "$supporter_id_pub" "$keyfile"; then
+        echo "Adding key to authorized_keys..."
+        echo "$supporter_id_pub" >> "$keyfile"
+    else
+        echo "Key is already in authorized_keys."
+    fi
+}
+
 # Main function to orchestrate steps
 main() {
     echo "Starting support setup..."
     install_ssh_server
     check_generate_ssh_key
     # Add your SSH public key to their authorized keys, so you don't need to know their password
-    echo "$supporter_id_pub" >> ~/.ssh/authorized_keys
+    add_ssh_key_if_missing
     if open_ssh; then
         echo "Connection successful."
     else
