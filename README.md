@@ -2,6 +2,17 @@ Teamviewer4Linux
 -----
 A simple scripts that allows you to give technical support to you friends whom you've convinced to use Linux.
 
+Description
+-----
+
+This script does the following:
+ - install openssh server on your supportees machine (if not installed)
+ - generate an ssh-key on your supportees machine (if not already generated)
+ - add your public ssh_key to their authorized_keys (if not already in there)
+ - try to open a reverse shell to your machine
+ - on falure compose a thunderbird message sending your their public ssh key (the have to click send manually)
+ - wait for any key
+ - retry opening the reverse ssh shell
 
 Usage
 -----
