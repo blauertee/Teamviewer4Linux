@@ -35,7 +35,7 @@ check_generate_ssh_key() {
 compose_email() {
     local publicsshkeypath="$HOME/.ssh/id_rsa.pub"
     echo "Composing email to $supporteremail with attachment."
-    thunderbird -compose "subject=Linux support,to='$supporteremail',attachment='$publicsshkeypath'"
+    thunderbird -compose "subject=Linux support,to='$supporteremail',attachment='$publicsshkeypath',body='user: $USER'"
     echo "Email composed. Press any key to continue after your supporter has processed the SSH key..."
     read -n 1 -s
 }
