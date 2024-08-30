@@ -9,6 +9,7 @@ Usage
 ### Prerequisites
 
 -   Use this only with close friends relatives or other people you trust fully
+-   Your machine is accessible via SSH + Key authentification from the internet
 
 ### Steps to Run the Script
 
