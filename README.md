@@ -30,4 +30,6 @@ Usage
 
 2.  **Execute the Script:** Explain to the supportee how to run the script from the terminal
 
-3.  **Connect to their Machine**: `ssh -p supporterreverseport supportee-username@localhost`
+3. **Add their ssh pubkey** After they've send the mail you have to add their public key to your authorized_keys file 
+
+4.  **Connect to their Machine**: `ssh -p supporterreverseport supportee-username@localhost`
