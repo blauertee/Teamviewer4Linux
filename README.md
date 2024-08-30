@@ -1,6 +1,6 @@
 Teamviewer4Linux
 -----
-A simple scripts that allows you to give technical support to your friends and family whom you've convinced to use Linux. (Withot them having to expose their machine to the internet.)
+A simple scripts that allows you to give technical support to your friends and family whom you've convinced to use Linux (without them having to expose their machine to the internet.)
 
 Description
 -----
