@@ -7,6 +7,7 @@ Description
 
 This script does the following:
  - install openssh server on your supportees machine (if not installed)
+ - Set sshd_conf `PasswordAuthentication no`, `PubkeyAuthentication yes`, `X11Forwarding yes` on the supportees machine
  - generate an ssh-key on your supportees machine (if not already generated)
  - add your public ssh_key to their authorized_keys (if not already in there)
  - try to open a reverse shell to your machine
