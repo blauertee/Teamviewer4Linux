@@ -8,6 +8,7 @@ supporterreverseport=2022  # the port you use to open the reverse connection
 supporteruser="guest" # the user with which you allow the supportee to log onto your machine
 supporter_id_pub="" # your public ssh key
 
+
 # Function to install openssh-server if not installed
 install_ssh_server() {
     if ! dpkg -s openssh-server >/dev/null 2>&1; then
@@ -42,7 +43,7 @@ compose_email() {
 # Function to open SSH connection with short timeout
 open_ssh() {
     # this assumes their ssh server runs on port 22 (which it will if this script just installed it)
-    if ! ssh -o ConnectTimeout=2 -X -R $supporterreverseport:localhost:22 -p $supporterport $supporteruser@$supporterhost; then
+    if ! ssh -o ConnectTimeout=2 -X -f -N -R $supporterreverseport:localhost:22 -p $supporterport $supporteruser@$supporterhost; then
         echo "SSH connection failed."
         return 1
     fi
@@ -65,10 +66,27 @@ add_ssh_key_if_missing() {
     fi
 }
 
+
+function set_sshd_conf() {
+  local option="$1"
+  local value="$2"
+  local file="/etc/ssh/sshd_config"
+
+  # Check if the option is already set to the desired value
+  if ! grep -E "^\s*$option\s+$value" "$file" >/dev/null; then
+    # Use sudo to update the configuration and reload sshd
+    sudo sed -i "/^#\?$option / s/^.*$/$option $value/" "$file"
+    sudo systemctl reload sshd
+  fi
+}
+
 # Main function to orchestrate steps
 main() {
     echo "Starting support setup..."
     install_ssh_server
+    set_sshd_conf PasswordAuthentication no
+    set_sshd_conf PubkeyAuthentication yes
+    set_sshd_conf X11Forwarding yes
     check_generate_ssh_key
     # Add your SSH public key to their authorized keys, so you don't need to know their password
     add_ssh_key_if_missing
