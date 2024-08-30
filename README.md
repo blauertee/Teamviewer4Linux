@@ -9,8 +9,6 @@ Usage
 ### Prerequisites
 
 -   Use this only with close friends relatives or other people you trust fully
--   Ensure you have `openssh-server` and `Thunderbird` installed on your system.
--   The supporter must provide their public SSH key to be used by the script.
 
 ### Steps to Run the Script
 
