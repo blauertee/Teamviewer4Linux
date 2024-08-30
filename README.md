@@ -11,7 +11,7 @@ This script does the following:
  - generate an ssh-key on your supportees machine (if not already generated)
  - add your public ssh_key to their authorized_keys (if not already in there)
  - try to open a reverse shell to your machine
- - on failure compose a thunderbird message sending your their public ssh key (they have to click send manually)
+ - on failure compose a thunderbird message sending you their public ssh key (they have to click send manually)
  - wait for any key
  - retry opening the reverse ssh shell
 
