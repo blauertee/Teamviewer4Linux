@@ -21,6 +21,7 @@ Usage
 
 -   Use this only with close friends relatives or other people you trust fully
 -   Your machine is accessible via SSH + Key authentification from the internet
+-   Debian Based Distro (using apt) on the supportees machine
 
 ### Steps to Run the Script
 
